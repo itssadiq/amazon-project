@@ -1,4 +1,5 @@
 import { cart } from "../data/cart.js";
+import { products } from "../data/products.js";
 
 let productsHTML = "";
 
@@ -104,8 +105,6 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     const message = document.querySelector(`.js-added-to-cart-${productId}`);
 
     message.classList.add("message-visible");
-
-    console.log(timeOutId);
 
     if (timeOutId === null) {
       timeOutId = setTimeout(() => {
