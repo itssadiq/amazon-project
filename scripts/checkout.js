@@ -42,12 +42,20 @@ cart.forEach((cartItem) => {
                   matchingProduct.priceCents
                 )}</div>
                 <div class="product-quantity">
-                  <span> Quantity: <span class="quantity-label">${
-                    cartItem.quantity
-                  }</span> </span>
-                  <span class="update-quantity-link link-primary">
+                  <span> Quantity: <span class="quantity-label js-quantity-label" data-product-id="${
+                    matchingProduct.id
+                  }">${cartItem.quantity}</span> </span>
+                  <span class="update-quantity-link link-primary js-update-quantity" data-product-id="${
+                    matchingProduct.id
+                  }">
                     Update
                   </span>
+                  <input class="quantity-input" data-product-id=${
+                    matchingProduct.id
+                  }>
+                  <span class="save-quantity-link link-primary" data-product-id="${
+                    matchingProduct.id
+                  }">Save</span>
                   <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${
                     matchingProduct.id
                   }">
@@ -112,5 +120,41 @@ document.querySelectorAll(".js-delete-link").forEach((link) => {
 
     container.remove();
     updateCartQuantity();
+  });
+});
+
+document.querySelectorAll(".js-update-quantity").forEach((link) => {
+  link.addEventListener("click", () => {
+    const productId = link.dataset.productId;
+    const container = document.querySelector(".cart-item-container");
+    container.classList.add("is-editing-quantity");
+
+    const updateQuantityLink = document.querySelectorAll(".js-update-quantity");
+    updateQuantityLink.forEach((e) => {
+      if (e.dataset.productId === productId) {
+        e.classList.add("hide");
+      }
+    });
+
+    const quantityLabel = document.querySelectorAll(".js-quantity-label");
+    quantityLabel.forEach((e) => {
+      if (e.dataset.productId === productId) {
+        e.classList.add("hide");
+      }
+    });
+
+    const saveQuantityLink = document.querySelectorAll(".save-quantity-link");
+    saveQuantityLink.forEach((e) => {
+      if (e.dataset.productId === productId) {
+        e.classList.add("visible");
+      }
+    });
+
+    const quantityInput = document.querySelectorAll(".quantity-input");
+    quantityInput.forEach((e) => {
+      if (e.dataset.productId === productId) {
+        e.classList.add("visible");
+      }
+    });
   });
 });
