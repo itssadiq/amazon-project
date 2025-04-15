@@ -53,7 +53,7 @@ cart.forEach((cartItem) => {
                   <input class="quantity-input" data-product-id=${
                     matchingProduct.id
                   }>
-                  <span class="save-quantity-link link-primary" data-product-id="${
+                  <span class="save-quantity-link link-primary js-save-quantity-link" data-product-id="${
                     matchingProduct.id
                   }">Save</span>
                   <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${
@@ -123,38 +123,49 @@ document.querySelectorAll(".js-delete-link").forEach((link) => {
   });
 });
 
+// document.querySelectorAll(".js-update-quantity").forEach((link) => {
+//   link.addEventListener("click", () => {
+//     const productId = link.dataset.productId;
+//     const container = document.querySelector(".cart-item-container");
+//     container.classList.add("is-editing-quantity");
+
+//     const updateQuantityLink = document.querySelectorAll(".js-update-quantity");
+//     updateQuantityLink.forEach((e) => {
+//       if (e.dataset.productId === productId) {
+//         e.classList.add("hide");
+//       }
+//     });
+
+//     const quantityLabel = document.querySelectorAll(".js-quantity-label");
+//     quantityLabel.forEach((e) => {
+//       if (e.dataset.productId === productId) {
+//         e.classList.add("hide");
+//       }
+//     });
+
+//     const saveQuantityLink = document.querySelectorAll(".save-quantity-link");
+//     saveQuantityLink.forEach((e) => {
+//       if (e.dataset.productId === productId) {
+//         e.classList.add("visible");
+//       }
+//     });
+
 document.querySelectorAll(".js-update-quantity").forEach((link) => {
   link.addEventListener("click", () => {
     const productId = link.dataset.productId;
-    const container = document.querySelector(".cart-item-container");
+    const container = document.querySelector(
+      `.js-cart-item-container-${productId}`
+    );
     container.classList.add("is-editing-quantity");
+  });
+});
 
-    const updateQuantityLink = document.querySelectorAll(".js-update-quantity");
-    updateQuantityLink.forEach((e) => {
-      if (e.dataset.productId === productId) {
-        e.classList.add("hide");
-      }
-    });
-
-    const quantityLabel = document.querySelectorAll(".js-quantity-label");
-    quantityLabel.forEach((e) => {
-      if (e.dataset.productId === productId) {
-        e.classList.add("hide");
-      }
-    });
-
-    const saveQuantityLink = document.querySelectorAll(".save-quantity-link");
-    saveQuantityLink.forEach((e) => {
-      if (e.dataset.productId === productId) {
-        e.classList.add("visible");
-      }
-    });
-
-    const quantityInput = document.querySelectorAll(".quantity-input");
-    quantityInput.forEach((e) => {
-      if (e.dataset.productId === productId) {
-        e.classList.add("visible");
-      }
-    });
+document.querySelectorAll(".js-save-quantity-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    const productId = link.dataset.productId;
+    const container = document.querySelector(
+      `.js-cart-item-container-${productId}`
+    );
+    container.classList.remove("is-editing-quantity");
   });
 });
