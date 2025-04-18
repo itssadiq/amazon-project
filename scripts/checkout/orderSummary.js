@@ -157,7 +157,8 @@ export function renderOrderSummary() {
           `.js-quantity-label-${productId}`
         );
         quantityLabel.innerHTML = inputValue;
-        updateCartQuantity();
+        renderOrderSummary();
+        renderPaymentSummary();
       }
     });
   }
