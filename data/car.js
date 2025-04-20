@@ -77,11 +77,3 @@ const car3 = new RaceCar({
   model: "F1",
   acceleration: 20,
 });
-
-console.log(car1);
-
-car3.go();
-car3.go();
-car3.go();
-
-console.log(car3);
