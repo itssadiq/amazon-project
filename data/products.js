@@ -95,9 +95,9 @@ export function loadProductsFetch() {
 
         return new Product(productDetails);
       });
-
-      console.log(loadProducts);
     });
+
+  console.log("load products");
 
   return promise;
 }
