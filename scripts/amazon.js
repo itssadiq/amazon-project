@@ -1,4 +1,3 @@
-// import { addtoCart, calculateCartQuantity } from "../data/cart.js";
 import { products, loadProducts } from "../data/products.js";
 import { formatCurrency } from "./utilities/money.js";
 import { cart } from "../data/cart-class.js";
@@ -96,8 +95,6 @@ function renderProductsGrid() {
 
   document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     button.addEventListener("click", () => {
-      // const productId = button.dataset.productId;
-
       const { productId } = button.dataset;
 
       cart.addtoCart(productId);

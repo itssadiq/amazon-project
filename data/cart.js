@@ -36,7 +36,6 @@ export function addtoCart(productId) {
     matchingItem.quantity += selectorQuantity;
   } else {
     cart.push({
-      // productId:  productId;
       productId,
       quantity: selectorQuantity,
       deliveryOptionId: "1",
@@ -80,7 +79,6 @@ export function updateQuantity(productId, inputValue) {
     matchingItem.quantity = inputValue;
   } else {
     cart.push({
-      // productId:  productId;
       productId,
       quantity: inputValue,
     });
@@ -106,11 +104,15 @@ export function loadCart(fun) {
   const xhr = new XMLHttpRequest();
 
   xhr.addEventListener("load", () => {
-    console.log(xhr.response);
-
     fun();
   });
 
   xhr.open("GET", "https://supersimplebackend.dev/cart");
   xhr.send();
+}
+
+export async function loadCartFetch(fun) {
+  const response = await fetch("https://supersimplebackend.dev/cart");
+
+  fun();
 }
