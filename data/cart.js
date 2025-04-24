@@ -20,10 +20,16 @@ function saveToStorage() {
 }
 
 export function addtoCart(productId) {
+  let selectorQuantity = 1;
+
   const selectorElement = document.querySelector(
     `.js-quantity-selector-${productId}`
   );
-  const selectorQuantity = Number(selectorElement.value);
+
+  if (selectorElement) {
+    selectorQuantity = Number(selectorElement.value);
+  }
+
   let matchingItem;
 
   cart.forEach((cartItem) => {
