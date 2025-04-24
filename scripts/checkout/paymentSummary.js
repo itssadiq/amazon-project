@@ -77,6 +77,7 @@ export function renderPaymentSummary() {
         });
 
         const order = await response.json();
+
         addOrder(order);
       } catch (error) {
         console.log("unexpected error. try again later");
